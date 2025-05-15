@@ -8,7 +8,7 @@ const serverlessExpress = require("@vendia/serverless-express");
 const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const server = express();
-module.exports = serverlessExpress({ app });
+module.exports = serverlessExpress({ server });
 
 server.use(
   cors({
