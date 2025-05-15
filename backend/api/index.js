@@ -16,6 +16,9 @@ server.use(
     allowedHeaders: "Content-Type, Authorization",
   })
 );
+
+const serverlessExpress = require("@vendia/serverless-express");
+module.exports = serverlessExpress({ app });
 server.use(express.json());
 server.use(cookieParser());
 
