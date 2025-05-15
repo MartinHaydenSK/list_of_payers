@@ -6,7 +6,7 @@ export const UseGetMethod = <T,>(route: string, trigger?: unknown) => {
   const [loadingHook, setLoadingHook] = useState<boolean>(false);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
+  console.log(API_URL);
   useEffect(
     () => {
       const fetchData = async () => {
