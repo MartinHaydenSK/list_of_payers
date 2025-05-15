@@ -1,5 +1,5 @@
 import { UseGetMethod } from "@/app/hooks/get_method";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import ListOfUsers from "./list_of_users";
 import PayingSystem from "./paying_system";
 
