@@ -17,10 +17,9 @@ server.use(
 );
 server.use(express.json());
 server.use(cookieParser());
+const URI = process.env.NEXT_PUBLIC_API_URL;
 
-const dbURI =
-  "mongodb+srv://MartinHayden:martinhaydenjebest@cluster0.ar6z1.mongodb.net/payment_machine";
-mongoose.connect(dbURI);
+mongoose.connect(URI);
 
 console.log("everything is working");
 
