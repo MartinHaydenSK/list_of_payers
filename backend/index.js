@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const server = express();
-server.listen(3001);
+
 server.use(
   cors({
     origin: `${FRONTEND}`,
