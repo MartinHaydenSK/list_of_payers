@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const UseGetMethod = <T,>(route: string, trigger?: any) => {
+export const UseGetMethod = <T,>(route: string, trigger?: unknown) => {
   const [dataHook, setDataHook] = useState<T | undefined>(undefined);
-  const [errorHook, setErrorHook] = useState<any>(undefined);
+  const [errorHook, setErrorHook] = useState<unknown>(undefined);
   const [loadingHook, setLoadingHook] = useState<boolean>(false);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;

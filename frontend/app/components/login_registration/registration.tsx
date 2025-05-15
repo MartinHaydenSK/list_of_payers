@@ -12,7 +12,7 @@ const Registration = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   //Response variabels
-  const [userDataDeliverd, setUserDataDeliverd] = useState<string | null>(null);
+
   const [responseError, setResponseError] = useState<string | null>(null);
   const [pending, setPending] = useState<boolean>(false);
   //Input errors
@@ -83,8 +83,8 @@ const Registration = () => {
 
         router.push("/prihlasenie");
       }
-    } catch (error: any) {
-      console.error("Chyba pri registrácii:", error.message);
+    } catch (error) {
+      console.error("Chyba pri registrácii:", error);
     }
   };
 

@@ -2,10 +2,7 @@
 import AdminInterface from "@/app/components/admin_interface/admin_interface";
 import { UseGetMethod } from "@/app/hooks/get_method";
 import React, { useEffect } from "react";
-import { LoginRegistrationContext } from "@/app/context/login_registration";
-import { useContext } from "react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface User {
   name: string;
@@ -13,14 +10,8 @@ interface User {
   email: string;
 }
 
-export default function UserInterface({
-  params,
-}: {
-  params: { username: string };
-}) {
-  const router = useRouter();
+export default function UserInterface({}: { params: { username: string } }) {
   const [showAdminContext, setShowAdminContext] = useState<boolean>(false);
-  const context = useContext(LoginRegistrationContext);
   const { dataHook, loadingHook } = UseGetMethod<User>("getuser");
 
   useEffect(() => {

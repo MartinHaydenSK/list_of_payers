@@ -12,7 +12,6 @@ interface User {
 }
 
 export default function AdminInterface() {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const { dataHook } = UseGetMethod<User[]>("getusers");
 
   const [toggle, setToggle] = useState<string>("Všetci prihlásený");

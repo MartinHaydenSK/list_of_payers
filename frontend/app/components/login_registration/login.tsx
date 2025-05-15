@@ -1,17 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { useContext } from "react";
 import { LoginRegistrationContext } from "@/app/context/login_registration";
 const Login = () => {
-  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [message, setMessage] = useState<string | null>(null);
   const [responseMessage, setResponseMessage] = useState<string>("");
-  const [errs, setErrs] = useState<
-    { Errors?: { email?: string; password?: string } } | string | null
-  >(null);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const context = useContext(LoginRegistrationContext);
@@ -29,9 +23,6 @@ const Login = () => {
       });
 
       if (!res.ok) {
-        const errorData = await res.json();
-        console.log(errorData);
-        setErrs(errorData);
       } else {
         const result = await res.json();
 
@@ -40,8 +31,8 @@ const Login = () => {
           context?.setResponse((prev) => prev + 1);
         }
       }
-    } catch (error: any) {
-      console.error("Chyba pri prihlasovaní:", error.message);
+    } catch (error) {
+      console.error("Chyba pri prihlasovaní:", error);
     }
   };
 

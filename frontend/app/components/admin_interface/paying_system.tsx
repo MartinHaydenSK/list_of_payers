@@ -13,7 +13,7 @@ export default function PayingSystem() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [response, setResponse] = useState<string | undefined>(undefined);
   const [operation, setOperation] = useState<boolean>(true);
-  const [customAmount, setCustomAmount] = useState<any>(0);
+  const [customAmount, setCustomAmount] = useState<number>(0);
   const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
   const [openingIndex, setOpeningIndex] = useState<number | undefined>(
     undefined
@@ -144,7 +144,7 @@ export default function PayingSystem() {
                     <input
                       type="number"
                       value={customAmount}
-                      onChange={(e) => setCustomAmount(e.target.value)}
+                      onChange={(e) => setCustomAmount(Number(e.target.value))}
                       className="p-1 rounded text-black"
                     />
                     <button

@@ -11,9 +11,7 @@ interface User {
 export default function ListOfUsers({ data }: { data: User[] | undefined }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [ListOfUsers, setListOfUsers] = useState<User[] | undefined>(data);
-  const [index, setIndex] = useState<number | undefined>(undefined);
   const addPayer = async (email: string, index: number) => {
-    setIndex(index);
     const response = await fetch(`${API_URL}/addPayer`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
