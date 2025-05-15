@@ -4,10 +4,11 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-
+const serverlessExpress = require("@vendia/serverless-express");
 const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const server = express();
+module.exports = serverlessExpress({ app });
 
 server.use(
   cors({
