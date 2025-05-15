@@ -10,7 +10,7 @@ interface User {
   email: string;
 }
 
-export default function UserInterface({}: { params: { username: string } }) {
+export default function UserInterface() {
   const [showAdminContext, setShowAdminContext] = useState<boolean>(false);
   const { dataHook, loadingHook } = UseGetMethod<User>("getuser");
 
