@@ -1,6 +1,5 @@
 "use client";
 
-import Login from "./components/login_registration/login";
 import { UseGetMethod } from "./hooks/get_method";
 
 interface User {
