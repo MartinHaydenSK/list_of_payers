@@ -29,7 +29,6 @@ const createToken = (payload) => {
 };
 
 server.get("/", (req, res) => {
-  console.log("we are good");
   res.send("everything is working");
 });
 
