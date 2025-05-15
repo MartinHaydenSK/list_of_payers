@@ -13,6 +13,7 @@ server.use(
   cors({
     origin: `${FRONTEND}`,
     credentials: true,
+    allowedHeaders: "Content-Type, Authorization",
   })
 );
 server.use(express.json());
