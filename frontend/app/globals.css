@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffff;
+  --purple: #0e6b90;
+  --purple: #97157d;
+  --color: #0e6b90;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-darkblack: #ffff;
+  --color-light-purple: #bc189b;
+  --color-dark-purple: #97157d;
+  --color-light-blue: #1084b1;
+  --color-dark-blue: #0e6b90;
+  --color-purple: #540861;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffff;
+    --foreground: #171717;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  h1 {
+    @apply text-7xl font-bold text-center text-foreground;
+  }
+
+  h2 {
+    @apply text-5xl font-bold text-foreground;
+  }
+
+  h3 {
+    @apply text-white font-bold text-3xl;
+  }
+  p {
+    @apply text-foreground;
+  }
+  a {
+    @apply no-underline text-white text-[16px] font-bold p-2 px-4;
+  }
+  a:hover {
+    @apply bg-amber-600;
+  }
+
+  button {
+    @apply w-3xs p-2 m-8 font-semibold rounded-full text-[15px] text-white border-none bg-amber-600 hover:bg-amber-700 duration-200;
+  }
+
+  input {
+    @apply bg-white rounded-[10px] p-2 border-2 border-gray-500 text-gray-600;
+  }
+
+  label {
+    @apply text-black my-2;
+  }
+}
+
+@layer components {
+  .landpage {
+    @apply bg-purple p-5 px-15 flex justify-between items-center m-8 w-fit rounded-full shadow-lg shadow-indigo-100/10;
+  }
+
+  .heroArticles {
+    @apply h-full w-auto flex justify-center items-center flex-col;
+  }
+
+  .basicGradient {
+    @apply bg-radial from-purple  to-darkblack to-70% absolute w-[80%] h-[80%] top-[10%] z-1;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .form {
+    @apply flex flex-col  bg-white p-10 rounded-[10px] min-w-xl;
+  }
+
+  .buttonForm {
+    @apply m-0 bg-light-blue my-5 mx-auto hover:bg-dark-blue;
+  }
+
+  .errorRegistration {
+    @apply text-red-500;
+  }
+}
