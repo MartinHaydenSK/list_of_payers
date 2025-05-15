@@ -6,17 +6,18 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 
 const UserTable = require("./users_table");
-
+const FRONTEND = process.env.NEXT_FRONTEND;
 const server = express();
 server.listen(3001);
 server.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: `${FRONTEND}`,
     credentials: true,
   })
 );
 server.use(express.json());
 server.use(cookieParser());
+
 const URI = process.env.NEXT_PUBLIC_API_URL;
 
 mongoose.connect(URI);
