@@ -6,17 +6,18 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
-const server = express();
+const serverless = require("serverless-http");
+const app = express();
 
-server.use(
+app.use(
   cors({
     origin: `${FRONTEND}`,
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
   })
 );
-server.use(express.json());
-server.use(cookieParser());
+app.use(express.json());
+app.use(cookieParser());
 
 const URI = process.env.NEXT_PUBLIC_API_URL;
 
@@ -28,11 +29,11 @@ const createToken = (payload) => {
   return jwt.sign({ data: payload }, "mhjekral", { expiresIn: "1d" });
 };
 
-server.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("everything is working");
 });
 
-server.post("/registration", async (req, res) => {
+app.post("/registration", async (req, res) => {
   console.log("called");
   const { name, surname, email, password } = req.body;
   const findUser = await UserTable.findOne({ email });
@@ -51,7 +52,7 @@ server.post("/registration", async (req, res) => {
   }
 });
 
-server.post("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   console.log("called");
   const { email, password } = req.body;
   console.log(req.body);
@@ -77,7 +78,7 @@ server.post("/login", async (req, res) => {
   }
 });
 
-server.post("/addPayer", async (req, res) => {
+app.post("/addPayer", async (req, res) => {
   try {
     const { email } = req.body;
     const findUser = await UserTable.findOneAndUpdate(
@@ -94,7 +95,7 @@ server.post("/addPayer", async (req, res) => {
   }
 });
 
-server.post("/addToDept", async (req, res) => {
+app.post("/addToDept", async (req, res) => {
   const { id, NewAmount } = req.body;
   console.log("fired", req.body);
   try {
@@ -113,7 +114,7 @@ server.post("/addToDept", async (req, res) => {
     console.log(error, "/addToDept");
   }
 });
-server.get("/getuser", async (req, res) => {
+app.get("/getuser", async (req, res) => {
   try {
     const token = req.cookies.user;
     const decodedToken = jwt.verify(token, "mhjekral");
@@ -126,7 +127,7 @@ server.get("/getuser", async (req, res) => {
   }
 });
 
-server.get("/getusers", async (req, res) => {
+app.get("/getusers", async (req, res) => {
   try {
     const findUsers = await UserTable.find();
     if (findUsers) {
@@ -136,3 +137,5 @@ server.get("/getusers", async (req, res) => {
     console.log(error, "/getusers");
   }
 });
+
+module.exports.handler = serverless(app);
