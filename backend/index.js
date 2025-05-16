@@ -8,14 +8,14 @@ const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const serverless = require("serverless-http");
 const app = express();
-app.listen(3000, console.log("hello world"));
+
 app.use(
   cors({
     origin: `${FRONTEND}`,
     credentials: true,
-    allowedHeaders: "Content-Type, Authorization",
   })
 );
+// allowedHeaders: "Content-Type, Authorization",
 app.use(express.json());
 app.use(cookieParser());
 
@@ -135,3 +135,5 @@ app.get("/getusers", async (req, res) => {
     console.log(error, "/getusers");
   }
 });
+
+app.listen(3000, console.log("hello world"));
