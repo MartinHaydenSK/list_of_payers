@@ -8,7 +8,7 @@ const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const serverless = require("serverless-http");
 const app = express();
-
+app.listen(3000, console.log("port listening on port 3000"));
 app.use(
   cors({
     origin: `${FRONTEND}`,
