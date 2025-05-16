@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { LoginRegistrationContext } from "@/app/context/login_registration";
 import { UseGetMethod } from "@/app/hooks/get_method";
 import { usePathname } from "next/navigation";
