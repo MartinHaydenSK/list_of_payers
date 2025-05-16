@@ -4,136 +4,124 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const serverlessExpress = require("@vendia/serverless-express");
+const serverlessExpress = require("@vendia/serverless-express"); // OPRAVA TU
 const UserTable = require("./users_table");
+
 const FRONTEND = process.env.NEXT_FRONTEND;
+const URI = process.env.NEXT_PUBLIC_API_URL;
+
 const server = express();
-module.exports = serverlessExpress({ app }); // ✅ správny export pre Vercel
+
 server.use(
   cors({
-    origin: `${FRONTEND}`,
+    origin: FRONTEND,
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
   })
 );
+
 server.use(express.json());
 server.use(cookieParser());
 
-const URI = process.env.NEXT_PUBLIC_API_URL;
-
-mongoose.connect(URI);
-
-console.log("everything is working");
+mongoose
+  .connect(URI)
+  .then(() => {
+    console.log("MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
 
 const createToken = (payload) => {
   return jwt.sign({ data: payload }, "mhjekral", { expiresIn: "1d" });
 };
 
 server.get("/", (req, res) => {
-  res.send("everything is working");
+  res.send("Backend is running!");
 });
 
 server.post("/registration", async (req, res) => {
-  console.log("called");
   const { name, surname, email, password } = req.body;
-  const findUser = await UserTable.findOne({ email });
-  if (findUser) {
-    res.status(400).json("Použivateľ už existuje");
-  } else {
-    const createUser = await UserTable.create({
-      name,
-      surname,
-      email,
-      password,
-    });
-    if (createUser) {
-      res.status(200).json("Boli ste úspešne zaregistorvaný");
-    }
+  const existing = await UserTable.findOne({ email });
+
+  if (existing) {
+    return res.status(400).json("Používateľ už existuje");
   }
+
+  const hashedPassword = await bcrypt.hash(password, 10); // OPRAVA TU
+  const user = await UserTable.create({
+    name,
+    surname,
+    email,
+    password: hashedPassword,
+  });
+
+  res.status(200).json("Úspešne zaregistrovaný");
 });
 
 server.post("/login", async (req, res) => {
-  console.log("called");
   const { email, password } = req.body;
-  console.log(req.body);
-  const findUser = await UserTable.findOne({ email });
-  if (findUser) {
-    console.log(findUser, "hello");
-    const comparison = await bcrypt.compare(password, findUser.password);
+  const user = await UserTable.findOne({ email });
 
-    if (comparison) {
-      const name = findUser.name;
-      const surname = findUser.surname;
-      const email = findUser.email;
-      const payload = { name, surname, email };
-      const token = createToken(payload);
-      res.cookie("user", token, { maxAge: 24 * 60 * 60 * 1000 });
-      res.status(200).json("Úspešene ste sa prihlásili");
-    } else {
-      res.status(200).json("Zlý email alebo heslo");
-    }
+  if (user && (await bcrypt.compare(password, user.password))) {
+    const token = createToken({
+      name: user.name,
+      surname: user.surname,
+      email: user.email,
+    });
+
+    res.cookie("user", token, { maxAge: 86400000, httpOnly: true });
+    res.status(200).json("Úspešné prihlásenie");
   } else {
-    console.log("called two");
-    res.status(200).json("Zlý email alebo heslo");
+    res.status(400).json("Zlý email alebo heslo");
   }
 });
 
 server.post("/addPayer", async (req, res) => {
   try {
     const { email } = req.body;
-    const findUser = await UserTable.findOneAndUpdate(
+    const updated = await UserTable.findOneAndUpdate(
       { email },
       { isPayer: true },
       { new: true }
     );
-    if (findUser) {
-      console.log(findUser);
-      res.status(200).json("Pridaný nový dlžník");
-    }
+    res.status(200).json("Pridaný nový dlžník");
   } catch (error) {
-    console.log(error, "/addPayer");
+    console.error(error);
+    res.status(500).json("Chyba pri pridávaní dlžníka");
   }
 });
 
 server.post("/addToDept", async (req, res) => {
-  const { id, NewAmount } = req.body;
-  console.log("fired", req.body);
   try {
-    const findUser = await UserTable.findOneAndUpdate(
-      {
-        _id: id,
-      },
-      { dept: NewAmount },
-      { new: true }
-    );
-
-    if (findUser) {
-      res.status(200).json("Úspešne bola pridaná hodnota");
-    }
+    const { id, NewAmount } = req.body;
+    await UserTable.findByIdAndUpdate(id, { dept: NewAmount });
+    res.status(200).json("Dlžoba aktualizovaná");
   } catch (error) {
-    console.log(error, "/addToDept");
+    console.error(error);
+    res.status(500).json("Chyba pri aktualizácii dlžoby");
   }
 });
+
 server.get("/getuser", async (req, res) => {
   try {
     const token = req.cookies.user;
-    const decodedToken = jwt.verify(token, "mhjekral");
-
-    if (decodedToken) {
-      res.status(200).json(decodedToken.data);
-    }
+    const decoded = jwt.verify(token, "mhjekral");
+    res.status(200).json(decoded.data);
   } catch (error) {
-    console.log(error, "/getuser");
+    console.error(error);
+    res.status(401).json("Neplatný token");
   }
 });
 
 server.get("/getusers", async (req, res) => {
   try {
-    const findUsers = await UserTable.find();
-    if (findUsers) {
-      res.status(200).json(findUsers);
-    }
+    const users = await UserTable.find();
+    res.status(200).json(users);
   } catch (error) {
-    console.log(error, "/getusers");
+    console.error(error);
+    res.status(500).json("Chyba pri načítaní používateľov");
   }
 });
+
+module.exports = serverlessExpress({ app: server });
