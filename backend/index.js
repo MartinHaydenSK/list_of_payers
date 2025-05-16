@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/registration", async (req, res) => {
-  console.log("called");
   const { name, surname, email, password } = req.body;
   const findUser = await UserTable.findOne({ email });
   if (findUser) {
@@ -51,12 +50,10 @@ app.post("/registration", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  console.log("called");
   const { email, password } = req.body;
-  console.log(req.body);
+
   const findUser = await UserTable.findOne({ email });
   if (findUser) {
-    console.log(findUser, "hello");
     const comparison = await bcrypt.compare(password, findUser.password);
 
     if (comparison) {
@@ -65,13 +62,17 @@ app.post("/login", async (req, res) => {
       const email = findUser.email;
       const payload = { name, surname, email };
       const token = createToken(payload);
-      res.cookie("user", token, { maxAge: 24 * 60 * 60 * 1000 });
+      res.cookie("user", token, {
+        maxAge: 24 * 60 * 60 * 1000,
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
       res.status(200).json("Úspešene ste sa prihlásili");
     } else {
       res.status(200).json("Zlý email alebo heslo");
     }
   } else {
-    console.log("called two");
     res.status(200).json("Zlý email alebo heslo");
   }
 });
@@ -85,7 +86,6 @@ app.post("/addPayer", async (req, res) => {
       { new: true }
     );
     if (findUser) {
-      console.log(findUser);
       res.status(200).json("Pridaný nový dlžník");
     }
   } catch (error) {
@@ -95,7 +95,7 @@ app.post("/addPayer", async (req, res) => {
 
 app.post("/addToDept", async (req, res) => {
   const { id, NewAmount } = req.body;
-  console.log("fired", req.body);
+
   try {
     const findUser = await UserTable.findOneAndUpdate(
       {
