@@ -1,25 +1,25 @@
 const express = require("express");
-// const mongoose = require("mongoose");
-// const cors = require("cors");
-// const bcrypt = require("bcrypt");
-// const cookieParser = require("cookie-parser");
-// const jwt = require("jsonwebtoken");
-// const UserTable = require("./users_table");
-// const FRONTEND = process.env.NEXT_FRONTEND;
-// const serverless = require("serverless-http");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+const UserTable = require("./users_table");
+const FRONTEND = process.env.NEXT_FRONTEND;
+const serverless = require("serverless-http");
 const app = express();
 app.listen(3000, console.log("hello world"));
-// app.use(
-//   cors({
-//     origin: `${FRONTEND}`,
-//     credentials: true,
-//     allowedHeaders: "Content-Type, Authorization",
-//   })
-// );
-// app.use(express.json());
-// app.use(cookieParser());
+app.use(
+  cors({
+    origin: `${FRONTEND}`,
+    credentials: true,
+    allowedHeaders: "Content-Type, Authorization",
+  })
+);
+app.use(express.json());
+app.use(cookieParser());
 
-// const URI = process.env.NEXT_PUBLIC_API_URL;
+const URI = process.env.NEXT_PUBLIC_API_URL;
 
 // mongoose.connect(URI);
 
