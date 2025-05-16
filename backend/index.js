@@ -28,7 +28,7 @@ const createToken = (payload) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("everything is working");
+  res.send(`everything is working ${FRONTEND}`);
 });
 
 app.post("/registration", async (req, res) => {
