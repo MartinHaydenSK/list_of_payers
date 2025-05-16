@@ -8,7 +8,6 @@ const serverlessExpress = require("@vendia/serverless-express");
 const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const server = express();
-module.exports = serverlessExpress({ server });
 
 server.use(
   cors({
@@ -138,3 +137,5 @@ server.get("/getusers", async (req, res) => {
     console.log(error, "/getusers");
   }
 });
+
+module.exports = serverlessExpress({ app: server });
