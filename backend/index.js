@@ -8,7 +8,7 @@ const UserTable = require("./users_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const serverless = require("serverless-http");
 const app = express();
-app.listen(3000, console.log("port listening on port 3000"));
+
 app.use(
   cors({
     origin: `${FRONTEND}`,
@@ -22,8 +22,6 @@ app.use(cookieParser());
 const URI = process.env.NEXT_PUBLIC_API_URL;
 
 mongoose.connect(URI);
-
-console.log("everything is working");
 
 const createToken = (payload) => {
   return jwt.sign({ data: payload }, "mhjekral", { expiresIn: "1d" });
@@ -137,5 +135,3 @@ app.get("/getusers", async (req, res) => {
     console.log(error, "/getusers");
   }
 });
-
-module.exports = app;
