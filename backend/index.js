@@ -21,11 +21,11 @@ app.use(cookieParser());
 
 const URI = process.env.NEXT_PUBLIC_API_URL;
 
-// mongoose.connect(URI);
+mongoose.connect(URI);
 
-// const createToken = (payload) => {
-//   return jwt.sign({ data: payload }, "mhjekral", { expiresIn: "1d" });
-// };
+const createToken = (payload) => {
+  return jwt.sign({ data: payload }, "mhjekral", { expiresIn: "1d" });
+};
 
 app.get("/", (req, res) => {
   res.send("everything is working");
