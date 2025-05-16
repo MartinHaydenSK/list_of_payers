@@ -17,17 +17,13 @@ export default function MainNavBar() {
   const { dataHook } = UseGetMethod<User>("getuser", context?.response);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    console.log(context?.response, "response");
-  }, [context?.response]);
-
   const pathname = usePathname();
   return (
     <header className="bg-blue-600 p-4">
       <div className="flex justify-between items-center">
         {/* Hamburger icon (shown only on small screens) */}
         <button
-          className="text-white text-2xl lg:hidden w-fit bg-blue-600"
+          className="text-white text-2xl lg:hidden w-fit m-0 bg-blue-600"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -36,23 +32,30 @@ export default function MainNavBar() {
 
         {/* Desktop navigation */}
         <nav className="hidden lg:flex gap-6 text-white">
-          <Link href="/" className={pathname === "/" ? "bg-amber-600" : ""}>
+          <Link
+            href="/"
+            onClick={() => setIsOpen(!isOpen)}
+            className={pathname === "/" ? "bg-amber-600" : ""}
+          >
             Domov
           </Link>
           <Link
             href="/prihlasenie"
+            onClick={() => setIsOpen(!isOpen)}
             className={pathname === "/prihlasenie" ? "bg-amber-600" : ""}
           >
             Prihlásenie
           </Link>
           <Link
             href="/registracia"
+            onClick={() => setIsOpen(!isOpen)}
             className={pathname === "/registracia" ? "bg-amber-600" : ""}
           >
             Registrácia
           </Link>
           {dataHook && (
             <Link
+              onClick={() => setIsOpen(!isOpen)}
               href={`users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`}
               className={pathname.startsWith("/users") ? "bg-amber-600" : ""}
             >
@@ -65,23 +68,30 @@ export default function MainNavBar() {
       {/* Mobile navigation */}
       {isOpen && (
         <nav className="flex flex-col gap-3 mt-4 text-white lg:hidden">
-          <Link href="/" className={pathname === "/" ? "bg-amber-600" : ""}>
+          <Link
+            href="/"
+            onClick={() => setIsOpen(!isOpen)}
+            className={pathname === "/" ? "bg-amber-600" : ""}
+          >
             Domov
           </Link>
           <Link
             href="/prihlasenie"
+            onClick={() => setIsOpen(!isOpen)}
             className={pathname === "/prihlasenie" ? "bg-amber-600" : ""}
           >
             Prihlásenie
           </Link>
           <Link
             href="/registracia"
+            onClick={() => setIsOpen(!isOpen)}
             className={pathname === "/registracia" ? "bg-amber-600" : ""}
           >
             Registrácia
           </Link>
           {dataHook && (
             <Link
+              onClick={() => setIsOpen(!isOpen)}
               href={`users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`}
               className={pathname.startsWith("/users") ? "bg-amber-600" : ""}
             >

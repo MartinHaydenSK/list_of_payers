@@ -29,7 +29,7 @@ export default function UserInterface() {
       setShowAdminContext(false);
     }
   }, [dataHook?.email, dataHook?.name, dataHook?.surname]);
-  console.log(showAdminContext);
+
   return (
     <div>
       {loadingHook && <p>loading...</p>}
