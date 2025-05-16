@@ -138,4 +138,4 @@ app.get("/getusers", async (req, res) => {
   }
 });
 
-module.exports.handler = serverless(app);
+module.exports = app;
