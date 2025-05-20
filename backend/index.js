@@ -109,7 +109,7 @@ app.post("/addToDept", async (req, res) => {
 
     const newReport = await RecordTable.create({
       date: new Date(),
-      amount: NewAmount - findUserCurrentAmount._id,
+      amount: NewAmount - findUserCurrentAmount.dept,
       user: id,
     });
     if (findUser && findUserCurrentAmount && newReport) {
