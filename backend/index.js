@@ -98,6 +98,7 @@ app.post("/addToDept", async (req, res) => {
   const { id, NewAmount } = req.body;
 
   try {
+    const findUserCurrentAmount = await UserTable.findOne({ _id: id });
     const findUser = await UserTable.findOneAndUpdate(
       {
         _id: id,
@@ -105,14 +106,15 @@ app.post("/addToDept", async (req, res) => {
       { dept: NewAmount },
       { new: true }
     );
-    await RecordTable.create({
-      date: new Date(),
-      amount: NewAmount,
-      user: id,
-    });
-
-    if (findUser) {
-      res.status(200).json("Úspešne bola pridaná hodnota");
+    if (findUserCurrentAmount) {
+      await RecordTable.create({
+        date: new Date(),
+        amount: NewAmount - findUserCurrentAmount._id,
+        user: id,
+      });
+      if (findUser) {
+        res.status(200).json("Úspešne bola pridaná hodnota");
+      }
     }
   } catch (error) {
     console.log(error, "/addToDept");
