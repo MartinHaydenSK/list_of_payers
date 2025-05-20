@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const UserTable = require("./users_table");
+const RecordTable = require("./reports_table");
 const FRONTEND = process.env.NEXT_FRONTEND;
 const serverless = require("serverless-http");
 const app = express();
@@ -104,6 +105,11 @@ app.post("/addToDept", async (req, res) => {
       { dept: NewAmount },
       { new: true }
     );
+    await RecordTable.create({
+      date: new Date(),
+      amount: NewAmount,
+      user: id,
+    });
 
     if (findUser) {
       res.status(200).json("Úspešne bola pridaná hodnota");
@@ -136,4 +142,4 @@ app.get("/getusers", async (req, res) => {
   }
 });
 
-app.listen(3000, console.log("hello world"));
+app.listen(3000);
