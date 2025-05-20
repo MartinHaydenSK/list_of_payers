@@ -10,6 +10,7 @@ interface User {
 
 export default function ListOfUsers({ data }: { data: User[] | undefined }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  
   const [ListOfUsers, setListOfUsers] = useState<User[] | undefined>(data);
   const addPayer = async (email: string, index: number) => {
     const response = await fetch(`${API_URL}/addPayer`, {

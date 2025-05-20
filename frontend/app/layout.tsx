@@ -10,6 +10,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Zoznam dlžníkov",
   description: "kto sa so mnou vozí musí platiť",
+  icons: {
+    icon: "/logo.svg", // relatívna cesta z /public
+  },
 };
 
 export default function RootLayout({

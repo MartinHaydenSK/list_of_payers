@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/Martin%20Hay/list_of_payers/frontend/app/context/login_registration.tsx"],"sourcesContent":["\"use client\";\r\nimport { useState } from \"react\";\r\nimport { createContext } from \"react\";\r\nimport { ReactNode } from \"react\";\r\ninterface LoginRegistration {\r\n  response: boolean;\r\n  setResponse: (value: boolean) => void;\r\n}\r\n\r\nexport const LoginRegistrationContext = createContext<LoginRegistration | null>(\r\n  null\r\n);\r\n\r\nexport const LoginRegistrationProvider = ({\r\n  children,\r\n}: {\r\n  children: ReactNode;\r\n}) => {\r\n  const [response, setResponse] = useState<boolean>(false);\r\n\r\n  return (\r\n    <LoginRegistrationContext.Provider value={{ response, setResponse }}>\r\n      {children}\r\n    </LoginRegistrationContext.Provider>\r\n  );\r\n};\r\n"],"names":[],"mappings":";;;;;AACA;AADA;;;;AASO,MAAM,yCAA2B,CAAA,GAAA,qMAAA,CAAA,gBAAa,AAAD,EAClD;AAGK,MAAM,4BAA4B,CAAC,EACxC,QAAQ,EAGT;IACC,MAAM,CAAC,UAAU,YAAY,GAAG,CAAA,GAAA,qMAAA,CAAA,WAAQ,AAAD,EAAW;IAElD,qBACE,8OAAC,yBAAyB,QAAQ;QAAC,OAAO;YAAE;YAAU;QAAY;kBAC/D;;;;;;AAGP","debugId":null}}]
+}
