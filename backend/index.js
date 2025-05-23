@@ -123,6 +123,7 @@ app.get("/getuser", async (req, res) => {
   try {
     const token = req.cookies.user;
     const decodedToken = jwt.verify(token, "mhjekral");
+    const findAllReports = await RecordTable.find();
 
     if (decodedToken) {
       res.status(200).json(decodedToken.data);
@@ -133,6 +134,7 @@ app.get("/getuser", async (req, res) => {
 });
 
 app.get("/getusers", async (req, res) => {
+  console.log(req.body);
   try {
     const findUsers = await UserTable.find();
     if (findUsers) {
