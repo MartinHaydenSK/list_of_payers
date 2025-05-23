@@ -1,11 +1,5 @@
 import React from "react";
 
-interface User {
-  name: string;
-  surname: string;
-  email: string;
-}
-
 interface Report {
   date: Date | string;
   amount: number;
