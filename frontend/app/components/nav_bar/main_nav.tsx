@@ -9,12 +9,28 @@ interface User {
   name: string;
   surname: string;
   email: string;
-  isPayer: boolean;
 }
 
+interface Report {
+  date: Date;
+  amount: number;
+  user: {
+    _id: string;
+    name: string;
+    surname: string;
+    email: string;
+    isPayer: boolean;
+    dept: number;
+  };
+}
+
+interface Payload {
+  user: User;
+  reports: Report[];
+}
 export default function MainNavBar() {
   const context = useContext(LoginRegistrationContext);
-  const { dataHook } = UseGetMethod<User>("getuser", context?.response);
+  const { dataHook } = UseGetMethod<Payload>("getuser", context?.response);
   const [isOpen, setIsOpen] = useState(false);
 
   const pathname = usePathname();
@@ -56,10 +72,10 @@ export default function MainNavBar() {
           {dataHook && (
             <Link
               onClick={() => setIsOpen(!isOpen)}
-              href={`users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`}
+              href={`users/${dataHook.user.name.toLowerCase()}-${dataHook.user.surname.toLowerCase()}`}
               className={pathname.startsWith("/users") ? "bg-amber-600" : ""}
             >
-              {dataHook.name} {dataHook.surname}
+              {dataHook.user.name} {dataHook.user.surname}
             </Link>
           )}
         </nav>
@@ -92,10 +108,10 @@ export default function MainNavBar() {
           {dataHook && (
             <Link
               onClick={() => setIsOpen(!isOpen)}
-              href={`users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`}
+              href={`users/${dataHook.user.name.toLowerCase()}-${dataHook.user.surname.toLowerCase()}`}
               className={pathname.startsWith("/users") ? "bg-amber-600" : ""}
             >
-              {dataHook.name} {dataHook.surname}
+              {dataHook.user.name} {dataHook.user.surname}
             </Link>
           )}
         </nav>

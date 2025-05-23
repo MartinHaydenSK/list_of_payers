@@ -137,11 +137,6 @@ function MainNavBar() {
     const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$context$2f$login_registration$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LoginRegistrationContext"]);
     const { dataHook } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$hooks$2f$get_method$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["UseGetMethod"])("getuser", context?.response);
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log(context?.response, "response");
-    }, [
-        context?.response
-    ]);
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         className: "bg-blue-600 p-4",
@@ -150,13 +145,13 @@ function MainNavBar() {
                 className: "flex justify-between items-center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        className: "text-white text-2xl lg:hidden w-fit bg-blue-600",
+                        className: "text-white text-2xl lg:hidden w-fit m-0 bg-blue-600",
                         onClick: ()=>setIsOpen(!isOpen),
                         "aria-label": "Toggle menu",
                         children: "☰"
                     }, void 0, false, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 29,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -164,54 +159,58 @@ function MainNavBar() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/",
+                                onClick: ()=>setIsOpen(!isOpen),
                                 className: pathname === "/" ? "bg-amber-600" : "",
                                 children: "Domov"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                                lineNumber: 39,
+                                lineNumber: 51,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/prihlasenie",
+                                onClick: ()=>setIsOpen(!isOpen),
                                 className: pathname === "/prihlasenie" ? "bg-amber-600" : "",
                                 children: "Prihlásenie"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                                lineNumber: 42,
+                                lineNumber: 58,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                 href: "/registracia",
+                                onClick: ()=>setIsOpen(!isOpen),
                                 className: pathname === "/registracia" ? "bg-amber-600" : "",
                                 children: "Registrácia"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                                lineNumber: 48,
+                                lineNumber: 65,
                                 columnNumber: 11
                             }, this),
                             dataHook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                href: `users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`,
+                                onClick: ()=>setIsOpen(!isOpen),
+                                href: `users/${dataHook.user.name.toLowerCase()}-${dataHook.user.surname.toLowerCase()}`,
                                 className: pathname.startsWith("/users") ? "bg-amber-600" : "",
                                 children: [
-                                    dataHook.name,
+                                    dataHook.user.name,
                                     " ",
-                                    dataHook.surname
+                                    dataHook.user.surname
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                                lineNumber: 55,
+                                lineNumber: 73,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 38,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                lineNumber: 27,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -219,54 +218,58 @@ function MainNavBar() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/",
+                        onClick: ()=>setIsOpen(!isOpen),
                         className: pathname === "/" ? "bg-amber-600" : "",
                         children: "Domov"
                     }, void 0, false, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 68,
+                        lineNumber: 87,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/prihlasenie",
+                        onClick: ()=>setIsOpen(!isOpen),
                         className: pathname === "/prihlasenie" ? "bg-amber-600" : "",
                         children: "Prihlásenie"
                     }, void 0, false, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 71,
+                        lineNumber: 94,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/registracia",
+                        onClick: ()=>setIsOpen(!isOpen),
                         className: pathname === "/registracia" ? "bg-amber-600" : "",
                         children: "Registrácia"
                     }, void 0, false, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 77,
+                        lineNumber: 101,
                         columnNumber: 11
                     }, this),
                     dataHook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        href: `users/${dataHook.name.toLowerCase()}-${dataHook.surname.toLowerCase()}`,
+                        onClick: ()=>setIsOpen(!isOpen),
+                        href: `users/${dataHook.user.name.toLowerCase()}-${dataHook.user.surname.toLowerCase()}`,
                         className: pathname.startsWith("/users") ? "bg-amber-600" : "",
                         children: [
-                            dataHook.name,
+                            dataHook.user.name,
                             " ",
-                            dataHook.surname
+                            dataHook.user.surname
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                        lineNumber: 84,
+                        lineNumber: 109,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-                lineNumber: 67,
+                lineNumber: 86,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/nav_bar/main_nav.tsx",
-        lineNumber: 26,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }

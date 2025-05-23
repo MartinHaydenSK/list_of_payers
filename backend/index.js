@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const UserTable = require("./users_table");
 const RecordTable = require("./reports_table");
-const FRONTEND = process.env.NEXT_FRONTEND;
+const FRONTEND = process.env.NEXT_FRONTEND || "http://localhost:3000";
 const serverless = require("serverless-http");
 const app = express();
 
@@ -20,7 +20,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-const URI = process.env.NEXT_PUBLIC_API_URL;
+const URI =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "mongodb+srv://MartinHayden:martinhaydenjebest@cluster0.ar6z1.mongodb.net/payment_machine";
 
 mongoose.connect(URI);
 
@@ -53,9 +55,9 @@ app.post("/registration", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const findUser = await UserTable.findOne({ email });
+  const findUser = await UserTable.findOne({ email }).select("+password");
   if (findUser) {
-    const comparison = await bcrypt.compare(password, findUser.password);
+    const comparison = bcrypt.compare(password, findUser.password);
 
     if (comparison) {
       const name = findUser.name;
@@ -123,10 +125,20 @@ app.get("/getuser", async (req, res) => {
   try {
     const token = req.cookies.user;
     const decodedToken = jwt.verify(token, "mhjekral");
-    const findAllReports = await RecordTable.find();
+
+    const findUser = await UserTable.findOne({
+      email: decodedToken.data.email,
+    });
+    console.log(findUser);
+    const findAllReports = await RecordTable.find({
+      user: findUser._id,
+    }).populate("user");
+
+    console.log(findAllReports);
 
     if (decodedToken) {
-      res.status(200).json(decodedToken.data);
+      const dataUser = decodedToken.data;
+      res.status(200).json({ user: dataUser, reports: findAllReports });
     }
   } catch (error) {
     console.log(error, "/getuser");
@@ -134,7 +146,6 @@ app.get("/getuser", async (req, res) => {
 });
 
 app.get("/getusers", async (req, res) => {
-  console.log(req.body);
   try {
     const findUsers = await UserTable.find();
     if (findUsers) {
@@ -145,4 +156,4 @@ app.get("/getusers", async (req, res) => {
   }
 });
 
-app.listen(3000);
+app.listen(3001);

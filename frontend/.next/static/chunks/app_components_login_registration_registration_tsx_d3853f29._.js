@@ -27,7 +27,6 @@ const Registration = ()=>{
     const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     //Response variabels
-    const [userDataDeliverd, setUserDataDeliverd] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [responseError, setResponseError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [pending, setPending] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     //Input errors
@@ -83,7 +82,6 @@ const Registration = ()=>{
                 credentials: "include"
             });
             const result = await response.json();
-            console.log(result);
             if (!response.ok) {
                 if (result === "Použivateľ už existuje") {
                     setResponseError(result);
@@ -94,7 +92,7 @@ const Registration = ()=>{
                 router.push("/prihlasenie");
             }
         } catch (error) {
-            console.error("Chyba pri registrácii:", error.message);
+            console.error("Chyba pri registrácii:", error);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -108,7 +106,7 @@ const Registration = ()=>{
                     children: "Registrácia"
                 }, void 0, false, {
                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                    lineNumber: 98,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this),
                 responseError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -119,7 +117,7 @@ const Registration = ()=>{
                             children: responseError
                         }, void 0, false, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 104,
+                            lineNumber: 103,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -128,13 +126,13 @@ const Registration = ()=>{
                             children: "Prihlásiť sa"
                         }, void 0, false, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 105,
+                            lineNumber: 104,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                    lineNumber: 103,
+                    lineNumber: 102,
                     columnNumber: 11
                 }, this),
                 !pending && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -150,7 +148,7 @@ const Registration = ()=>{
                                             children: "Meno"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 118,
+                                            lineNumber: 117,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -160,7 +158,7 @@ const Registration = ()=>{
                                             className: "input-style"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 119,
+                                            lineNumber: 118,
                                             columnNumber: 17
                                         }, this),
                                         errorName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -168,13 +166,13 @@ const Registration = ()=>{
                                             children: errorName
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 126,
+                                            lineNumber: 125,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 116,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -185,7 +183,7 @@ const Registration = ()=>{
                                             children: "Priezvisko"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 131,
+                                            lineNumber: 130,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -195,7 +193,7 @@ const Registration = ()=>{
                                             className: "input-style"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this),
                                         errorSurname && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -203,19 +201,19 @@ const Registration = ()=>{
                                             children: errorSurname
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                                            lineNumber: 139,
+                                            lineNumber: 138,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 129,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 116,
+                            lineNumber: 115,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -226,7 +224,7 @@ const Registration = ()=>{
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 145,
+                                    lineNumber: 144,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -236,7 +234,7 @@ const Registration = ()=>{
                                     className: "input-style"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 146,
+                                    lineNumber: 145,
                                     columnNumber: 15
                                 }, this),
                                 errorEmail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -244,13 +242,13 @@ const Registration = ()=>{
                                     children: errorEmail
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 153,
+                                    lineNumber: 152,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 144,
+                            lineNumber: 143,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -261,7 +259,7 @@ const Registration = ()=>{
                                     children: "Heslo"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 158,
+                                    lineNumber: 157,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -271,7 +269,7 @@ const Registration = ()=>{
                                     className: "input-style"
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 158,
                                     columnNumber: 15
                                 }, this),
                                 errorPassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -279,13 +277,13 @@ const Registration = ()=>{
                                     children: errorPassword
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                                    lineNumber: 166,
+                                    lineNumber: 165,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 157,
+                            lineNumber: 156,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -294,7 +292,7 @@ const Registration = ()=>{
                             children: "Potvrdiť"
                         }, void 0, false, {
                             fileName: "[project]/app/components/login_registration/registration.tsx",
-                            lineNumber: 170,
+                            lineNumber: 169,
                             columnNumber: 13
                         }, this)
                     ]
@@ -304,22 +302,22 @@ const Registration = ()=>{
                     children: "Kontroluje sa ..."
                 }, void 0, false, {
                     fileName: "[project]/app/components/login_registration/registration.tsx",
-                    lineNumber: 180,
+                    lineNumber: 179,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/components/login_registration/registration.tsx",
-            lineNumber: 94,
+            lineNumber: 93,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/components/login_registration/registration.tsx",
-        lineNumber: 93,
+        lineNumber: 92,
         columnNumber: 5
     }, this);
 };
-_s(Registration, "9yfglFEXZugnBpvCnSDmTUy43zw=", false, function() {
+_s(Registration, "uas50Ydys59KOHXQVhgh8sRkp7g=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
